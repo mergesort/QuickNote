@@ -53,7 +53,7 @@ float BUTTON_WIDTH = 76.0f;
 	UIButton *_killme = [UIButton buttonWithType:UIButtonTypeCustom];
 	_killme.frame = CGRectMake(_view.frame.size.width-68, 3, 64, 64);
 	
-	[_killme addTarget:self action:@selector(removeDoneButton) forControlEvents:UIControlEventTouchDown];
+//	[_killme addTarget:self action:@selector(removeDoneButton) forControlEvents:UIControlEventTouchDown];
 	
 	_killme.backgroundColor = [UIColor blackColor];
 	[_killme setTitleColor: [UIColor whiteColor] forState:UIControlStateNormal];
@@ -61,6 +61,12 @@ float BUTTON_WIDTH = 76.0f;
 	[_killme setTitle:@"Done" forState:UIControlStateNormal];         
 	_killme.layer.cornerRadius = 10.0f;
 	[_view addSubview:_killme];
+	
+	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeDoneButton)];
+	tap.numberOfTapsRequired = 1;
+//	tap.numberOfTouches = 1;
+	
+	[_killme addGestureRecognizer: tap];
 	
 	[[_textview window] makeKeyAndVisible];
 }
