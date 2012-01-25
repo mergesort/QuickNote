@@ -61,6 +61,8 @@ float BUTTON_WIDTH = 76.0f;
 	[_killme setTitle:@"Done" forState:UIControlStateNormal];         
 	_killme.layer.cornerRadius = 10.0f;
 	[_view addSubview:_killme];
+	
+	[[_textview window] makeKeyAndVisible];
 }
 
 -(void) removeDoneButton
@@ -72,6 +74,8 @@ float BUTTON_WIDTH = 76.0f;
 	for(UIButton *b in _view.subviews)
 		if([b isKindOfClass: [UIButton class]])
 			[b removeFromSuperview];
+	
+	[[[UIApplication sharedApplication] keyWindow] makeKeyAndVisible];
 }
 
 
