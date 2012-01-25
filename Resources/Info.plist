@@ -5,7 +5,7 @@
 	<key>CFBundleName</key>
 	<string>QuickNote</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.pq.quicknote</string>
+	<string>com.mergesort.quicknote</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleVersion</key>
@@ -23,13 +23,13 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>AppBundleID</key>
-	<string>com.apple.stocks</string>
+	<string>com.mergesort.quicknote</string>
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>
 		<integer>2</integer>
 	</array>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.1</string>
 </dict>
 </plist>
