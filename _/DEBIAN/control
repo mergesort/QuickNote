@@ -1,10 +1,13 @@
 Package: com.mergesort.QuickNote
 Name: QuickNote
-Depends: firmware (>= 5.0), com.chpwn.weeloader, com.saurik.substrate.safemode
-Version: 1.2-3
+Depends: firmware (>= 5.0), com.chpwn.weeloader
+Version: 1.3.5-1
 Architecture: iphoneos-arm
 Description: A notification center widget to give you a notepad for jotting down some quick notes.
+Depiction: http://mobile.twitter.com/mergesort
+Conflicts: cy.ipad 
+Homepage: http://fabisevi.ch
 Maintainer: Joseph Fabisevich <jfabisevich@me.com>
 Author: Joseph Fabisevich <jfabisevich@me.com>
 Section: Addons (NotificationCenter)
-Installed-Size: 28
+Installed-Size: 68

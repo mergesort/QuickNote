@@ -2,7 +2,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 //@author: Joseph Fabisevich
-//@version: 1.1
+//@version: 1.3.5
 
 static NSBundle *_QuickNoteWeeAppBundle = nil;
 
@@ -19,8 +19,8 @@ float BUTTON_WIDTH = 76.0f;
 
 @end
 
-
 @implementation QuickNoteController
+
 @synthesize view = _view;
 
 + (void)initialize {
@@ -29,7 +29,6 @@ float BUTTON_WIDTH = 76.0f;
 
 - (id)init {
 	if((self = [super init]) != nil) {
-		
 	} return self;
 }
 
@@ -49,22 +48,19 @@ float BUTTON_WIDTH = 76.0f;
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
     _textview.frame = CGRectMake(0, 0, _view.frame.size.width-BUTTON_WIDTH, [self viewHeight]);
-	
+
 	UIButton *_killme = [UIButton buttonWithType:UIButtonTypeCustom];
-	_killme.frame = CGRectMake(_view.frame.size.width-68, 3, 64, 64);
-	
-//	[_killme addTarget:self action:@selector(removeDoneButton) forControlEvents:UIControlEventTouchDown];
+	_killme.frame = CGRectMake(_view.frame.size.width-68, 3, 64, [self viewHeight]-6);
 	
 	_killme.backgroundColor = [UIColor blackColor];
 	[_killme setTitleColor: [UIColor whiteColor] forState:UIControlStateNormal];
 	
 	[_killme setTitle:@"Done" forState:UIControlStateNormal];         
-	_killme.layer.cornerRadius = 10.0f;
+	_killme.layer.cornerRadius = 8.0f;
 	[_view addSubview:_killme];
 	
 	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeDoneButton)];
 	tap.numberOfTapsRequired = 1;
-//	tap.numberOfTouches = 1;
 	
 	[_killme addGestureRecognizer: tap];
 	
@@ -107,6 +103,14 @@ float BUTTON_WIDTH = 76.0f;
 
 	_textview.backgroundColor = [UIColor clearColor];
 
+	NSDictionary *prefsDict = [[NSDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.mergesort.QuickNote.plist"];
+	
+	int fontSize = (prefsDict != nil) ? [[prefsDict objectForKey:@"fontSize"] intValue] : 12;
+	
+	[_textview setFont:[UIFont systemFontOfSize:fontSize]];
+	
+	[prefsDict release];
+	
 	[_view addSubview:_textview];
 	// Add subviews to _backgroundView (or _view) here.
 }
@@ -136,7 +140,14 @@ float BUTTON_WIDTH = 76.0f;
 }
 
 - (float)viewHeight {
-	return 70.0f;
+
+	NSDictionary *prefsDict = [[NSDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.mergesort.QuickNote.plist"];
+		
+	int numberOfLines = (prefsDict != nil) ? [[prefsDict objectForKey:@"numberOfLines"] intValue] : 3;
+	
+	[prefsDict release];
+	
+	return (float)(numberOfLines * 23.0f);
 }
 
 @end
