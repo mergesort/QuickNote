@@ -2,7 +2,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 //@author: Joseph Fabisevich
-//@version: 1.3.5
+//@version: 1.3.6
 
 static NSBundle *_QuickNoteWeeAppBundle = nil;
 
